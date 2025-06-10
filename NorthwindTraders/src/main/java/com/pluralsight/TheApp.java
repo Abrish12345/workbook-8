@@ -21,7 +21,7 @@ public class TheApp {
             //define your query
 
             //this one is like typing the query in the new query windows
-            String query = "SELECT productName FROM products";
+            String query = "SELECT productId, productName, unitPrice, unitsInStock  FROM products";
 
             //2. Execute your query
 
@@ -31,8 +31,17 @@ public class TheApp {
             //process the result
             //this is a way to view the result set
             while (results.next()) {
-                String title = results.getString("ProductName");
-                System.out.println(title);
+                int productId = results.getInt("productId");
+                String productName = results.getString("ProductName");
+                double unitPrice = results.getDouble("unitPrice");
+                int unitsInStock = results.getInt("unitsInStock");
+
+                System.out.println("Product Id: " + productId);
+                System.out.println("Name: " + productName);
+                System.out.println("Price " + unitPrice);
+                System.out.println("Stock: " + unitsInStock);
+                System.out.println("------------------");
+
             }
 
             // 3. Close the connection
